@@ -125,14 +125,19 @@ export function AppSidebar({ from, to, onFromChange, onToChange }: AppSidebarPro
                 </PopoverContent>
               </Popover>
             </div>
+            <div className="mt-3 px-2">
+              <div className="rounded-lg bg-secondary/50 px-3 py-2">
+                <p className="text-xs font-medium text-muted-foreground">Dataset period</p>
+                <p className="text-xs text-muted-foreground">Dec 16 - Dec 29, 2025</p>
+              </div>
+            </div>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter className="p-4">
         <div className="rounded-lg bg-secondary/50 px-3 py-2">
-          <p className="text-xs font-medium text-muted-foreground">Dataset period</p>
-          <p className="text-xs text-muted-foreground">Dec 16 - Dec 29, 2025</p>
+          <p className="text-xs text-muted-foreground">Data updates in real-time</p>
         </div>
       </SidebarFooter>
     </Sidebar>
