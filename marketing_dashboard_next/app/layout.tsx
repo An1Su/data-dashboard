@@ -8,25 +8,24 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Analytics - Marketing Dashboard",
+  title: "Marketing Dashboard",
   description: "Track your ad campaign and email marketing performance",
-  generator: "v0.app",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: "target.png",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "target.png",
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/target.png",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/target.png",
   },
 }
 
