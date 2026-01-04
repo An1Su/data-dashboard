@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8084"
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8084"
 
 export interface Campaign {
   id: number

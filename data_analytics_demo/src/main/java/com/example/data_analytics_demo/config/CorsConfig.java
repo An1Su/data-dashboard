@@ -14,8 +14,17 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173",
-                "http://localhost:3000"));
+        // Allow localhost for development and Vercel domains for production
+        String allowedOrigins = System.getenv("ALLOWED_ORIGINS");
+        if (allowedOrigins != null && !allowedOrigins.isEmpty()) {
+            config.setAllowedOrigins(List.of(allowedOrigins.split(",")));
+        } else {
+            // Default: allow localhost (add Vercel URL after deployment)
+            config.setAllowedOrigins(List.of(
+                    "http://localhost:5173",
+                    "http://localhost:3000"
+            ));
+        }
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
