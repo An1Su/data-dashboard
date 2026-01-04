@@ -42,17 +42,18 @@ public class DataInitializer {
 
 
         // 1. Create some campaigns
-        Campaign c1 = createCampaign("Welcome Bonus FI", "Google Ads", "FI", BigDecimal.valueOf(10000), LocalDate.now().minusDays(60));
-        Campaign c2 = createCampaign("Reload Bonus SE", "Facebook", "SE", BigDecimal.valueOf(8000), LocalDate.now().minusDays(45));
-        Campaign c3 = createCampaign("VIP Email Reactivation", "Email", "FI", BigDecimal.valueOf(5000), LocalDate.now().minusDays(30));
+        Campaign c1 = createCampaign("Welcome Bonus FI", "Google Ads", "FI", BigDecimal.valueOf(10000), LocalDate.of(2025, 11, 16));
+        Campaign c2 = createCampaign("Reload Bonus SE", "Facebook", "SE", BigDecimal.valueOf(8000), LocalDate.of(2025, 12, 1));
+        Campaign c3 = createCampaign("VIP Email Reactivation", "Email", "FI", BigDecimal.valueOf(5000), LocalDate.of(2025, 12, 15));
 
         campaignRepository.saveAll(List.of(c1, c2, c3));
 
         // 2. Create 14 days of KPIs for each campaign
-        LocalDate today = LocalDate.now();
-        LocalDate startDate = today.minusDays(13); // 14 days including today
+        LocalDate startDate = LocalDate.of(2025, 12, 16); // Fixed start date
+        LocalDate endDate = LocalDate.of(2025, 12, 29);   // Fixed end date
 
-        for (LocalDate d = startDate; !d.isAfter(today); d = d.plusDays(1)) {
+
+        for (LocalDate d = startDate; !d.isAfter(endDate); d = d.plusDays(1)) {
             createDailyKpiForCampaign(d, c1, 1.0);
             createDailyKpiForCampaign(d, c2, 0.8);
             createDailyKpiForCampaign(d, c3, 0.5);
@@ -73,7 +74,7 @@ public class DataInitializer {
         emailCampaignRepository.saveAll(List.of(e1, e2));
 
 // 4. Create 14 days of KPIs for each email campaign
-        for (LocalDate d = startDate; !d.isAfter(today); d = d.plusDays(1)) {
+        for (LocalDate d = startDate; !d.isAfter(endDate); d = d.plusDays(1)) {
             createDailyEmailKpiForCampaign(d, e1, 1.0);
             createDailyEmailKpiForCampaign(d, e2, 0.8);
         }
